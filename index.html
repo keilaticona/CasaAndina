@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hoteles</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap-411/css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="container">
+	   <a href="#" class="btn btn-success" style= " background: #726F72;"id="todo">HABITACIONES</a>
+	   <a href="#" class="btn btn-warning" style=" background: #FAE40C;" id="camara">HABITACION SUPERIOR MATRIMONIAL</a>
+	    <a href="#" class="btn btn-warning" style=" background: #FAE40C;"id="tv">HABITACION SUPERIOR TWIN</a>
+	    <a href="#" class="btn btn-warning" style=" background: #FAE40C;"id="celular">HABITACION SUPERIOR TWIN CON VISTA AL LAGO</a>
+	</div>
+	
+	<div class="container">
+		<div class="row" id="aqui">
+		<!--aqui estaran las tarjetas con productos-->
+		</div>
+	</div>
+	<!--Esta funcionando jquery?-->
+	<script>
+		$(document).ready(function(){
+
+			$("#todo").click(function(){
+				var datos={
+					tipo:0
+				};
+				$.post("listarProductos.php",datos,function(data,status){
+					if (status=="success") {
+						$("#aqui").html(data);
+					}else{
+						console.log("Error,recurso no encontrado");
+					}
+				});
+			});
+
+
+			//PARA CAMARAS
+			$("#camara").click(function(){
+				var datos={
+					tipo:1
+				};
+				$.post("listarProductos.php",datos,function(data,status){
+					if (status=="success") {
+						$("#aqui").html(data);
+					}else{
+						console.log("Error, recurso no encontrado");
+					}
+				});
+			});
+			//PARA TV
+			$("#tv").click(function(){
+				var datos={
+					tipo:2
+				};
+				$.post("listarProductos.php",datos,function(data,status){
+					if (status=="success") {
+						$("#aqui").html(data);
+					}else{
+						console.log("Error, recurso no encontrado");
+					}
+				});
+			});
+			//PARA CELULAR
+			$("#celular").click(function(){
+				var datos={
+					tipo:3
+				};
+				$.post("listarProductos.php",datos,function(data,status){
+					if (status=="success") {
+						$("#aqui").html(data);
+					}else{
+						console.log("Error, recurso no encontrado");
+					}
+				});
+			});
+
+		});
+	</script>
+
+</body>
+</html>
